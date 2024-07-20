@@ -1,14 +1,22 @@
+import { currencyFormatter } from "../utils/formatter";
+import Button from "./UI/Button";
+
 const MealItem = ({ meal }) => {
   return (
     <li className="meal-item">
       <article>
-        <img src={data[0].image} alt="mac-chees burger" />
+        <img
+          src={`http://localhost:3000/${meal.image}`}
+          alt="mac-chees burger"
+        />
         <div>
           <h3>{meal.name}</h3>
-          <p className="meal-item-price">$40.40</p>
+          <p className="meal-item-price">
+            {meal.price && currencyFormatter(meal.price)}
+          </p>
           <p className=".meal-item-description">{meal.description}</p>
           <p className="meal-item-actions">
-            <button>Add to cart</button>
+            <Button>Add to cart</Button>
           </p>
         </div>
       </article>
