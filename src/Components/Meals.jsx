@@ -1,7 +1,6 @@
 import { useState } from "react";
 import MealItem from "./MealItem";
 import { useEffect } from "react";
-import { currencyFormatter } from "../utils/formatter";
 
 const Meals = () => {
   const [loadedMeals, setLoadedMeals] = useState([]);
