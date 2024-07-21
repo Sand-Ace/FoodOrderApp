@@ -40,6 +40,8 @@ app.post("/orders", async (req, res) => {
     orderData.customer.street.trim() === "" ||
     orderData.customer["postal-code"] === null ||
     orderData.customer["postal-code"].trim() === "" ||
+    // orderData.customer.number === null ||
+    // orderData.customer.number.length < 10 ||
     orderData.customer.city === null ||
     orderData.customer.city.trim() === ""
   ) {

@@ -89,6 +89,7 @@ h1 {
 
 .meal-item-description {
   margin: 1rem;
+  padding: 0px 0.1rem;
 }
 
 .meal-item-price {
@@ -246,6 +247,15 @@ h1 {
 
 .modal::backdrop {
   background-color: rgba(0, 0, 0, 0.55);
+}
+
+.error {
+  background-color: rgb(255, 152, 129);
+  color: rgb(207, 0, 0);
+  width: 40%;
+  padding: 0.1rem 1rem;
+  margin-inline: auto;
+  border-radius: 9px;
 }
 
 @keyframes fade-slide-up {

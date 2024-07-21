@@ -23,7 +23,7 @@ const MealItem = ({ meal }) => {
           <p className="meal-item-price">
             {meal.price && currencyFormatter(meal.price)}
           </p>
-          <p className=".meal-item-description">{meal.description}</p>
+          <p className="meal-item-description">{meal.description}</p>
           <p className="meal-item-actions">
             <Button onClick={handleAddMealToCart}>Add to cart</Button>
           </p>
