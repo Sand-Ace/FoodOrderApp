@@ -19,10 +19,12 @@ const Checkout = () => {
   const { cartTotal, items } = useContext(CartContext);
   const { progress, hideCheckOut } = useContext(UserProgressContext);
 
-  const { data, isLoading, error, sendRequest } = useHttp(
-    "http://localhost:3000/orders",
-    requestConfig
-  );
+  const {
+    data,
+    isLoading: isSending,
+    error,
+    sendRequest,
+  } = useHttp("http://localhost:3000/orders", requestConfig);
 
   function handleCloseCheckOut() {
     hideCheckOut();
@@ -33,25 +35,14 @@ const Checkout = () => {
     const fd = new FormData(event.target);
     const customerData = Object.fromEntries(fd.entries());
 
-    sendRequest({
-      order: {
-        items: items,
-        customer: customerData,
-      },
-    });
-
-    fetch("http://localhost:3000/orders", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    sendRequest(
+      JSON.stringify({
         order: {
           items: items,
           customer: customerData,
         },
-      }),
-    });
+      })
+    );
   }
 
   return (
@@ -69,10 +60,15 @@ const Checkout = () => {
         </div>
 
         <p className="modal-actions">
-          <Button type="button" textOnly onClick={handleCloseCheckOut}>
-            Close
-          </Button>
-          <Button type="submit">Submit Order</Button>
+          {isSending && <p>Sending order....</p>}
+          {!isSending && (
+            <>
+              <Button type="button" textOnly onClick={handleCloseCheckOut}>
+                Close
+              </Button>
+              <Button type="submit">Submit Order</Button>
+            </>
+          )}
         </p>
       </form>
     </Modal>
