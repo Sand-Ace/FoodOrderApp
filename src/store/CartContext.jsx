@@ -23,6 +23,7 @@ function cartReducerFunction(state, action) {
         ...existingItem,
         quantity: existingItem.quantity + 1,
       };
+      // swapping existingItem and updatedItem with updated quantity price
       updatedItems[existingCartIndex] = updatedItem;
     } else {
       updatedItems.push({ ...action.item, quantity: 1 });
@@ -46,7 +47,7 @@ function cartReducerFunction(state, action) {
       // new item with old item information
       const updateditem = {
         ...existingCartItem,
-        quantity: existingCartItem - 1,
+        quantity: existingCartItem.quantity - 1,
       };
 
       updatedItems[existingCartIndex] = updateditem;
